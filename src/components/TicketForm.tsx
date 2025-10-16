@@ -41,62 +41,10 @@ export default function TicketForm() {
 
     return (
         <div className="flex min-h-screen bg-gray-50">
-            {/* Sidebar */}
-            <div className="w-56 bg-gradient-to-b from-blue-600 to-blue-700 text-white">
-                <div className="p-4">
-                    <div className="bg-blue-800 rounded px-4 py-2 mb-6">
-                        <h2 className="text-sm font-semibold">DX-REQUEST</h2>
-                    </div>
-                    <nav className="space-y-1">
-                        <a href="#" className="flex items-center px-3 py-2 text-sm hover:bg-blue-600 rounded group">
-                            <span className="mr-2">📊</span>
-                            <span className="flex-1">Dashboard</span>
-                            <span className="text-blue-300">›</span>
-                        </a>
-                        <a href="#" className="flex items-center px-3 py-2 text-sm bg-cyan-500 rounded">
-                            <span className="mr-2">📋</span>
-                            <span className="flex-1">Danh sách yêu cầu</span>
-                            <span>›</span>
-                        </a>
-                        <a href="#" className="px-8 py-2 text-sm block hover:bg-blue-600 rounded">
-                            Yêu cầu đang theo dõi
-                        </a>
-                        <a href="#" className="flex items-center px-3 py-2 text-sm hover:bg-blue-600 rounded group">
-                            <span className="mr-2">📁</span>
-                            <span className="flex-1">Yêu cầu được phân công</span>
-                            <span className="text-blue-300">›</span>
-                        </a>
-                        <a href="#" className="flex items-center px-3 py-2 text-sm hover:bg-blue-600 rounded group">
-                            <span className="mr-2">⚙️</span>
-                            <span className="flex-1">Thiết lập</span>
-                            <span className="text-blue-300">›</span>
-                        </a>
-                    </nav>
-                </div>
-            </div>
 
             {/* Main Content */}
             <div className="flex-1 flex">
                 <div className="flex-1 bg-white">
-                    {/* Top Bar */}
-                    <div className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-sm">
-                            <a href="#" className="text-blue-600 hover:underline">Home</a>
-                            <span className="text-gray-400">/</span>
-                            <a href="#" className="text-blue-600 hover:underline">Chi tiết yêu cầu hỗ trợ</a>
-                            <span className="text-gray-400">/</span>
-                            <span className="text-gray-600">Phiếu TL kệnh Offnet trên BMO</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-red-500 rounded flex items-center justify-center text-white text-xs">
-                                5
-                            </div>
-                            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">
-                                VT
-                            </div>
-                            <span className="text-sm">Vu Thach Nhu Han</span>
-                        </div>
-                    </div>
 
                     {/* Header with Actions */}
                     <div className="px-6 py-4">
@@ -185,17 +133,6 @@ export default function TicketForm() {
                                             <button className="px-3 border border-gray-300 rounded">👁️</button>
                                         </div>
                                     </div>
-                                    <div>
-                                        <label className="block text-sm mb-2">Ý kiến QA</label>
-                                        <div className="flex gap-2">
-                                            <input
-                                                type="text"
-                                                placeholder="Input text"
-                                                className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm"
-                                            />
-                                            <button className="px-3 border border-gray-300 rounded">👁️</button>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div className="space-y-4">
                                     <div>
@@ -210,12 +147,6 @@ export default function TicketForm() {
                                         <label className="block text-sm mb-2">Phân loại nguồn nhân</label>
                                         <select className="w-full border border-gray-300 rounded px-3 py-2 text-sm">
                                             <option>Data</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm mb-2">Phương án triển khai</label>
-                                        <select className="w-full border border-gray-300 rounded px-3 py-2 text-sm">
-                                            <option>Cập nhật dữ liệu</option>
                                         </select>
                                     </div>
                                     <div>

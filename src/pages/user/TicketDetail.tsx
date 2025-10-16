@@ -113,8 +113,9 @@ export default function TicketDetail() {
                         <form onSubmit={handleSubmit}>
                             <div className="grid grid-cols-2 gap-6 mb-6">
                                 <div>
-                                    <label className="block text-sm text-gray-700 mb-2">Thời gian mong muốn hoàn thành</label>
+                                    <label htmlFor="desiredCompletionDate" className="block text-sm text-gray-700 mb-2">Thời gian mong muốn hoàn thành</label>
                                     <input
+                                        id="desiredCompletionDate"
                                         type="text"
                                         placeholder="MM / DD / YYYY"
                                         value={formData.desiredCompletionDate}
@@ -123,8 +124,9 @@ export default function TicketDetail() {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-700 mb-2">Dự án/Ứng dụng</label>
-                                    <select 
+                                    <label htmlFor="project" className="block text-sm text-gray-700 mb-2">Dự án/Ứng dụng</label>
+                                    <select
+                                        id="project"
                                         value={formData.project}
                                         onChange={(e) => setFormData({...formData, project: e.target.value})}
                                         className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -140,8 +142,9 @@ export default function TicketDetail() {
                             <div className="grid grid-cols-2 gap-6">
                                 <div className="space-y-4">
                                     <div>
-                                        <label className="block text-sm text-gray-700 mb-2">Thời gian dự kiến bắt đầu</label>
+                                        <label htmlFor="startDate" className="block text-sm text-gray-700 mb-2">Thời gian dự kiến bắt đầu</label>
                                         <input
+                                            id="startDate"
                                             type="text"
                                             placeholder="MM / DD / YYYY"
                                             value={formData.startDate}
@@ -150,8 +153,9 @@ export default function TicketDetail() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm text-gray-700 mb-2">Nhân sự QA tiếp nhận</label>
-                                        <select 
+                                        <label htmlFor="qaPersonnel" className="block text-sm text-gray-700 mb-2">Nhân sự QA tiếp nhận</label>
+                                        <select
+                                            id="qaPersonnel"
                                             value={formData.qaPersonnel}
                                             onChange={(e) => setFormData({...formData, qaPersonnel: e.target.value})}
                                             className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -162,8 +166,9 @@ export default function TicketDetail() {
                                         </select>
                                     </div>
                                     <div>
-                                        <label className="block text-sm text-gray-700 mb-2">Nhân sự xử lý</label>
+                                        <label htmlFor="handler" className="block text-sm text-gray-700 mb-2">Nhân sự xử lý</label>
                                         <input
+                                            id="handler"
                                             type="text"
                                             placeholder="Default"
                                             value={formData.handler}
@@ -174,8 +179,9 @@ export default function TicketDetail() {
                                 </div>
                                 <div className="space-y-4">
                                     <div>
-                                        <label className="block text-sm text-gray-700 mb-2">Thời gian dự kiến hoàn thành</label>
+                                        <label htmlFor="endDate" className="block text-sm text-gray-700 mb-2">Thời gian dự kiến hoàn thành</label>
                                         <input
+                                            id="endDate"
                                             type="text"
                                             placeholder="MM / DD / YYYY"
                                             value={formData.endDate}
@@ -184,8 +190,9 @@ export default function TicketDetail() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm text-gray-700 mb-2">Phân loại nguồn nhân</label>
-                                        <select 
+                                        <label htmlFor="resourceType" className="block text-sm text-gray-700 mb-2">Phân loại nguồn nhân</label>
+                                        <select
+                                            id="resourceType"
                                             value={formData.resourceType}
                                             onChange={(e) => setFormData({...formData, resourceType: e.target.value})}
                                             className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -196,8 +203,9 @@ export default function TicketDetail() {
                                         </select>
                                     </div>
                                     <div>
-                                        <label className="block text-sm text-gray-700 mb-2">Nguồn nhân</label>
+                                        <label htmlFor="resource" className="block text-sm text-gray-700 mb-2">Nguồn nhân</label>
                                         <input
+                                            id="resource"
                                             type="text"
                                             placeholder="Input text"
                                             value={formData.resource}

@@ -60,14 +60,12 @@ const UserSidebar = () => {
                 boxShadow: isExpanded ? '2px 0 4px rgba(0, 0, 0, 0.05)' : 'none'
             }}>
             
-            {/* Header */}
-            <div className="p-4 border-b border-gray-200 bg-blue-600">
-                <div className={`transition-all duration-300 ease-in-out ${
-                    isExpanded ? "opacity-100" : "opacity-0"
-                }`}>
-                    <h2 className="text-white font-bold text-lg">DX-REQUEST</h2>
+            {/* Header - Only show when expanded */}
+            {isExpanded && (
+                <div className="p-4 border-b border-gray-200 bg-blue-600">
+                    <h2 className="text-white font-bold text-lg">Navigation</h2>
                 </div>
-            </div>
+            )}
 
             {/* Menu Items */}
             <div className="sidebar-menu flex-1 overflow-y-auto overflow-x-hidden bg-white">

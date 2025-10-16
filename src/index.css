@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* Import regular Inter font */
+@import "@fontsource/inter";
+/* Import semibold weight specifically */
+@import "@fontsource/inter/600.css";
+/* If you need other weights, import them too: */
+@import "@fontsource/inter/500.css"; /* Medium */
+@import "@fontsource/inter/700.css"; /* Bold */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}

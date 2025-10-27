@@ -8,6 +8,7 @@ import TicketManagement from './pages/admin/Ticket/TicketManagement'
 import UserTicketList from './pages/user/UserTicketList'
 import TicketDetail from './pages/user/TicketDetail'
 import Login from './pages/Login'
+import GoogleAuthSuccess from './pages/GoogleAuthSuccess'
 
 function App() {
 
@@ -16,6 +17,9 @@ function App() {
           <Routes>
             {/* Login */}
             <Route path='/login' element={<Login />} />
+            
+            {/* Google Auth Callback */}
+            <Route path='/google-auth-success' element={<GoogleAuthSuccess />} />
             
             {/* Customer */}
             <Route path='/' element={<UserLayout />}>

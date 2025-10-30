@@ -95,8 +95,8 @@ This document summarizes the complete conversion of the Ticket Management System
 - Status badges with vibrant colors (green, blue, red, yellow)
 - Pagination controls with blue active state
 
-### 5. TicketDetail.tsx ✅
-**Location**: `src/pages/user/TicketDetail.tsx`
+### 5. Ticket.tsx ✅
+**Location**: `src/pages/user/Ticket.tsx`
 
 **Changes**:
 - Main background: `bg-gray-900` → `bg-white`
@@ -125,8 +125,8 @@ This document summarizes the complete conversion of the Ticket Management System
 - White card with shadow
 - Clean, modern design
 
-### 7. UserTicketList.tsx ✅
-**Location**: `src/pages/user/UserTicketList.tsx`
+### 7. Tickets.tsx ✅
+**Location**: `src/pages/user/Tickets.tsx`
 
 **Status**: Already in light theme
 - White background with gray table
@@ -167,7 +167,7 @@ This document summarizes the complete conversion of the Ticket Management System
 | AdminLayout | `shared/layouts/` | ✅ Converted | Light |
 | UserLayout | `shared/layouts/` | ✅ Already Light | Light |
 | TicketManagement | `pages/admin/Ticket/` | ✅ Converted | Light |
-| TicketDetail | `pages/user/` | ✅ Converted | Light |
+| Ticket | `pages/user/` | ✅ Converted | Light |
 | UserTicketList | `pages/user/` | ✅ Already Light | Light |
 | Login | `pages/` | ✅ Already Light | Light |
 | Home | `pages/user/` | ⚪ Minimal | N/A |
@@ -234,14 +234,14 @@ This document summarizes the complete conversion of the Ticket Management System
 2. `src/shared/components/UserSidebar.tsx`
 3. `src/shared/components/Timeline.tsx`
 4. `src/pages/admin/Ticket/TicketManagement.tsx`
-5. `src/pages/user/TicketDetail.tsx`
+5. `src/pages/user/Ticket.tsx`
 6. `src/shared/layouts/AdminLayout.tsx`
 
 ## Files Already Light Theme
 
 1. `src/shared/components/Header.tsx`
 2. `src/pages/Login.tsx`
-3. `src/pages/user/UserTicketList.tsx`
+3. `src/pages/user/Tickets.tsx`
 4. `src/shared/layouts/UserLayout.tsx`
 
 ## Conversion Date

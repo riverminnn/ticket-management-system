@@ -9,6 +9,8 @@ import UserTicketList from './pages/user/UserTicketList'
 import TicketDetail from './pages/user/TicketDetail'
 import Login from './pages/Login'
 import GoogleAuthSuccess from './pages/GoogleAuthSuccess'
+import GoogleCallback from './pages/GoogleCallback'
+import DepartmentManagement from './pages/admin/Department/DepartmentManagement'
 
 function App() {
 
@@ -18,7 +20,10 @@ function App() {
             {/* Login */}
             <Route path='/login' element={<Login />} />
             
-            {/* Google Auth Callback */}
+            {/* Google Auth Callback - receives code from Google */}
+            <Route path='/auth/google-callback' element={<GoogleCallback />} />
+            
+            {/* Google Auth Success - processes token */}
             <Route path='/google-auth-success' element={<GoogleAuthSuccess />} />
             
             {/* Customer */}
@@ -36,6 +41,7 @@ function App() {
             <Route path='admin' element={<AdminLayout />}>
               <Route index={true} element={<Admin />} />
               <Route path='ticket' element={<TicketManagement />} />
+              <Route path='department' element={<DepartmentManagement />} />
             </Route>
           </Routes>
       </BrowserRouter>

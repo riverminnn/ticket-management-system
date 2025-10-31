@@ -1,6 +1,6 @@
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { 
-    faDiagramProject, faAngleDoubleLeft, faAngleDoubleRight, faHome,  faTicket
+    faDiagramProject, faAngleDoubleLeft, faAngleDoubleRight, faHome,  faTicket, faBuilding
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -19,7 +19,8 @@ const AdminSidebar = () => {
     
     const [menuItems] = useState<MenuItem[]>([
         { id: 0, name: 'Admin', icon: faDiagramProject, link: '/admin' },
-        { id: 8, name: 'Ticket Management', icon: faTicket, link: '/admin/ticket' }
+        { id: 8, name: 'Ticket Management', icon: faTicket, link: '/admin/ticket' },
+        { id: 9, name: 'Departments', icon: faBuilding, link: '/admin/department' }
     ]);
 
     const toggleSidebar = () => {

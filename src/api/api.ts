@@ -31,6 +31,13 @@ export const API_ENDPOINTS = {
     USER_CREATE: `${API_BASE_URL}/user/create`,
     USER_UPDATE: `${API_BASE_URL}/user/update`,
     USER_BY_DEPARTMENT: `${API_BASE_URL}/user/get_by_department`,
+    
+    // Department endpoints
+    DEPARTMENT_CREATE: `${API_BASE_URL}/department/create`,
+    DEPARTMENT_UPDATE: `${API_BASE_URL}/department/update`,
+    DEPARTMENT_DELETE: `${API_BASE_URL}/department/delete`,
+    DEPARTMENT_GET_ALL: `${API_BASE_URL}/department/get_all`,
+    DEPARTMENT_GET_BY_ID: `${API_BASE_URL}/department/get_by_id`,
 };
 
 // ==================== Authentication APIs ====================
@@ -247,6 +254,158 @@ export const getUsersByDepartment = async (departmentId: number) => {
         return await response.json();
     } catch (error) {
         console.error('Get users by department error:', error);
+        throw error;
+    }
+};
+
+// ==================== Department APIs (Full CRUD - Admin Only) ====================
+
+export interface Department {
+    id: number;
+    name: string;
+    description?: string;
+}
+
+export interface CreateDepartmentDto {
+    name: string;
+    description?: string;
+}
+
+export interface UpdateDepartmentDto {
+    id: number;
+    name: string;
+    description?: string;
+}
+
+// Get All Departments
+export const getAllDepartments = async (): Promise<Department[]> => {
+    try {
+        const response = await fetch(API_ENDPOINTS.DEPARTMENT_GET_ALL, {
+            method: 'GET',
+            headers: createAuthHeaders(),
+        });
+
+        if (!response.ok) {
+            // Read response once and handle it
+            const contentType = response.headers.get('content-type');
+            let errorMessage = `HTTP ${response.status}: Failed to fetch departments`;
+            
+            if (contentType && contentType.includes('application/json')) {
+                try {
+                    const error = await response.json();
+                    errorMessage = error.message || error.title || errorMessage;
+                } catch {
+                    // If JSON parsing fails, use default message
+                }
+            } else {
+                try {
+                    const errorText = await response.text();
+                    if (errorText) errorMessage = `HTTP ${response.status}: ${errorText}`;
+                } catch {
+                    // Use default message
+                }
+            }
+            
+            throw new Error(errorMessage);
+        }
+
+        const result = await response.json();
+        // Handle different response formats
+        if (result.data) return result.data;
+        if (Array.isArray(result)) return result;
+        if (result.success && result.data) return result.data;
+        return [];
+    } catch (error) {
+        console.error('Get all departments error:', error);
+        throw error;
+    }
+};
+
+// Get Department by ID
+export const getDepartmentById = async (departmentId: number): Promise<Department> => {
+    try {
+        const response = await fetch(
+            `${API_ENDPOINTS.DEPARTMENT_GET_BY_ID}?departmentId=${departmentId}`,
+            {
+                method: 'GET',
+                headers: createAuthHeaders(),
+            }
+        );
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Failed to fetch department');
+        }
+
+        const result = await response.json();
+        return result.data || result;
+    } catch (error) {
+        console.error('Get department by ID error:', error);
+        throw error;
+    }
+};
+
+// Create Department (Admin only)
+export const createDepartment = async (departmentData: CreateDepartmentDto) => {
+    try {
+        const response = await fetch(API_ENDPOINTS.DEPARTMENT_CREATE, {
+            method: 'POST',
+            headers: createAuthHeaders(),
+            body: JSON.stringify(departmentData),
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Failed to create department');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Create department error:', error);
+        throw error;
+    }
+};
+
+// Update Department (Admin only)
+export const updateDepartment = async (departmentData: UpdateDepartmentDto) => {
+    try {
+        const response = await fetch(API_ENDPOINTS.DEPARTMENT_UPDATE, {
+            method: 'POST',
+            headers: createAuthHeaders(),
+            body: JSON.stringify(departmentData),
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Failed to update department');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Update department error:', error);
+        throw error;
+    }
+};
+
+// Delete Department (Admin only)
+export const deleteDepartment = async (departmentId: number) => {
+    try {
+        const response = await fetch(
+            `${API_ENDPOINTS.DEPARTMENT_DELETE}?departmentId=${departmentId}`,
+            {
+                method: 'DELETE',
+                headers: createAuthHeaders(),
+            }
+        );
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Failed to delete department');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Delete department error:', error);
         throw error;
     }
 };

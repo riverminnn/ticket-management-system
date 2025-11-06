@@ -6,10 +6,10 @@ import {
     faTimesCircle,
     faPlus
 } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const stats = [
         { icon: faTicket, label: 'Tổng yêu cầu', value: '24', color: 'bg-blue-500' },

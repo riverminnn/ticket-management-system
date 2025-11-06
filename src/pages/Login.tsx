@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { getGoogleAuthUrl } from '../api/api';
 
 export default function LoginPage() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -30,89 +28,17 @@ export default function LoginPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-8">
-                {/* Header */}
-                <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h1>
-                    <p className="text-gray-600">Sign in to your account</p>
-                </div>
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-sm p-8 text-center">
+                <h1 className="text-3xl font-bold text-gray-800 mb-2">Welcome!</h1>
+                <p className="text-gray-600 mb-8">Sign in to your account</p>
 
                 {/* Error Message */}
                 {error && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                    <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
                         {error}
                     </div>
                 )}
 
-                {/* Login Form */}
-                <form className="space-y-6">
-                    {/* Username Field */}
-                    <div>
-                        <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-                            Username or Email
-                        </label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
-                            placeholder="Enter your username"
-                        />
-                    </div>
-
-                    {/* Password Field */}
-                    <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
-                            placeholder="Enter your password"
-                        />
-                    </div>
-
-                    {/* Forgot Password */}
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                            <input
-                                type="checkbox"
-                                id="remember"
-                                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                            />
-                            <label htmlFor="remember" className="ml-2 block text-sm text-gray-700">
-                                Remember me
-                            </label>
-                        </div>
-                        <a href="#" className="text-sm text-indigo-600 hover:text-indigo-500">
-                            Forgot password?
-                        </a>
-                    </div>
-
-                    {/* Login Button */}
-                    <button
-                        type="submit"
-                        className="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 transition duration-200"
-                    >
-                        Sign In
-                    </button>
-                </form>
-
-                {/* Divider */}
-                <div className="relative my-6">
-                    <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div className="relative flex justify-center text-sm">
-                        <span className="px-4 bg-white text-gray-500">Or continue with</span>
-                    </div>
-                </div>
-
-                {/* Google Login Button */}
                 <button
                     type="button"
                     onClick={handleGoogleLogin}
@@ -143,14 +69,6 @@ export default function LoginPage() {
                     )}
                     {loading ? 'Connecting to Google...' : 'Sign in with Google'}
                 </button>
-
-                {/* Sign Up Link */}
-                <p className="text-center text-sm text-gray-600 mt-6">
-                    Don't have an account?{' '}
-                    <a href="#" className="text-indigo-600 hover:text-indigo-500 font-medium">
-                        Sign up
-                    </a>
-                </p>
             </div>
         </div>
     );

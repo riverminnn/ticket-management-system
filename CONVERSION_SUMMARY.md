@@ -31,7 +31,7 @@ Successfully converted your co-developer's code from the `mountain` branch into 
 - Better visual hierarchy with shadows and rings
 - TypeScript interfaces for type safety
 
-### 3. **Ticket Detail Page** (`src/pages/user/TicketDetail.tsx`)
+### 3. **Ticket Detail Page** (`src/pages/user/Ticket.tsx`)
 **From Mountain Branch:**
 - TicketForm component with light theme
 - Form fields for ticket details
@@ -56,7 +56,7 @@ Successfully converted your co-developer's code from the `mountain` branch into 
 <Route path='/login' element={<Login />} />
 
 // Ticket detail page
-<Route path='user/tickets/:id' element={<TicketDetail />} />
+<Route path='user/tickets/:id' element={<Ticket />} />
 
 // Additional routes
 <Route path='user/tracking' element={<UserTicketList />} />
@@ -88,7 +88,7 @@ Successfully converted your co-developer's code from the `mountain` branch into 
 ### Created Files:
 1. `src/pages/Login.tsx` - New login page with dark theme
 2. `src/shared/components/Timeline.tsx` - Reusable timeline component
-3. `src/pages/user/TicketDetail.tsx` - Ticket detail page
+3. `src/pages/user/Ticket.tsx` - Ticket detail page
 
 ### Modified Files:
 1. `src/App.tsx` - Added new routes for login and ticket detail

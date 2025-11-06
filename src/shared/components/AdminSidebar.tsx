@@ -1,5 +1,5 @@
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { 
+import {
     faDiagramProject, faAngleDoubleLeft, faAngleDoubleRight, faHome,  faTicket
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,10 +16,10 @@ interface MenuItem {
 const AdminSidebar = () => {
     const [isExpanded, setIsExpanded] = useState<boolean>(true);
     const location = useLocation();
-    
+
     const [menuItems] = useState<MenuItem[]>([
         { id: 0, name: 'Admin', icon: faDiagramProject, link: '/admin' },
-        { id: 8, name: 'Ticket Management', icon: faTicket, link: '/admin/ticket' }
+        { id: 1, name: 'Ticket Management', icon: faTicket, link: '/admin/tickets' }
     ]);
 
     const toggleSidebar = () => {
@@ -48,7 +48,7 @@ const AdminSidebar = () => {
     }, []);
 
     return (
-        <aside 
+        <aside
             className={`flex flex-col bg-white border-r border-gray-200 h-full transition-all duration-300 ease-in-out ${
                 isExpanded ? "w-64" : "w-15"
             }`}
@@ -57,26 +57,26 @@ const AdminSidebar = () => {
             }}>
             <div className="sidebar-menu h-[calc(100vh-64px)] overflow-y-auto overflow-x-hidden">
                 {menuItems.map((item) => {
-                    const isActive = location.pathname === item.link || 
-                                     (item.link !== '/' && location.pathname.startsWith(item.link));
+                    const isActive = location.pathname === item.link ||
+                        (item.link !== '/' && location.pathname.startsWith(item.link));
                     return (
-                        <Link 
-                            key={item.id} 
-                            to={item.link} 
+                        <Link
+                            key={item.id}
+                            to={item.link}
                             className={`border-b border-gray-100 flex items-center gap-3 py-3 px-4 transition-all duration-200 ease-in-out group
-                            ${isActive 
-                                ? 'bg-blue-50 text-blue-600 border-l-4 border-l-blue-600' 
+                            ${isActive
+                                ? 'bg-blue-50 text-blue-600 border-l-4 border-l-blue-600'
                                 : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}
                         >
                             <div className="min-w-6 h-6 flex items-center justify-center">
-                                <FontAwesomeIcon 
-                                    icon={item.icon} 
-                                    className={`text-lg transition-transform duration-300 ${!isExpanded ? 'transform scale-110' : ''}`} 
+                                <FontAwesomeIcon
+                                    icon={item.icon}
+                                    className={`text-lg transition-transform duration-300 ${!isExpanded ? 'transform scale-110' : ''}`}
                                 />
                             </div>
                             <div className={`whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out ${
-                                isExpanded 
-                                    ? "max-w-xs opacity-100" 
+                                isExpanded
+                                    ? "max-w-xs opacity-100"
                                     : "max-w-0 opacity-0"
                             }`}>
                                 <span className="text-sm font-medium">{item.name}</span>
@@ -89,7 +89,7 @@ const AdminSidebar = () => {
                 <div className={`transition-all duration-300 ease-in-out ${
                     isExpanded ? "opacity-100 max-w-full" : "opacity-0 max-w-0 overflow-hidden"
                 }`}>
-                    <Link 
+                    <Link
                         to="/"
                         className="w-8 h-8 rounded-full ml-2 bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-colors"
                         title="Go to Home"
@@ -97,14 +97,14 @@ const AdminSidebar = () => {
                         <FontAwesomeIcon icon={faHome} />
                     </Link>
                 </div>
-                <button 
-                    type="button" 
-                    onClick={toggleSidebar} 
+                <button
+                    type="button"
+                    onClick={toggleSidebar}
                     className="w-8 h-8 rounded-full mr-2 bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-all duration-200"
                     title="Toggle Sidebar"
                 >
-                    <FontAwesomeIcon 
-                        icon={isExpanded ? faAngleDoubleLeft : faAngleDoubleRight} 
+                    <FontAwesomeIcon
+                        icon={isExpanded ? faAngleDoubleLeft : faAngleDoubleRight}
                         className="transition-transform duration-300 ease-in-out"
                     />
                 </button>

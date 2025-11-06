@@ -1,6 +1,6 @@
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
-    faHome, faTasks, faUser, faListAlt, faCog, faSignOutAlt,
+    faHome, faListAlt, faCog, faSignOutAlt,
     faAngleDoubleLeft, faAngleDoubleRight, faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,12 +20,9 @@ const UserSidebar = () => {
 
     const [menuItems] = useState<MenuItem[]>([
         { id: 1, name: 'Dashboard', icon: faHome, link: '/user/dashboard' },
-        { id: 2, name: 'Tạo yêu cầu mới', icon: faPlus, link: '/user/tickets/create' },
-        { id: 3, name: 'Yêu cầu của tôi', icon: faListAlt, link: '/user/tickets/my' },
-        { id: 4, name: 'Yêu cầu đang theo dõi', icon: faTasks, link: '/user/tracking' },
-        { id: 5, name: 'Yêu cầu được phân công', icon: faUser, link: '/user/assigned' },
-        { id: 6, name: 'Danh sách yêu cầu hỗ trợ', icon: faListAlt, link: '/user/tickets' },
-        { id: 7, name: 'Thiết lập', icon: faCog, link: '/user/settings' },
+        { id: 2, name: 'Tạo yêu cầu mới', icon: faPlus, link: '/user/ticket/create' },
+        { id: 3, name: 'Danh sách yêu cầu hỗ trợ', icon: faListAlt, link: '/user/tickets' },
+        { id: 4, name: 'Thiết lập', icon: faCog, link: '/user/settings' },
     ]);
 
     const toggleSidebar = () => {

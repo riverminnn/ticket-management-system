@@ -52,14 +52,14 @@ const CreateTicket = () => {
             setLoading(true);
             try {
                 const catResponse = await fetch(`${API_CONFIG.baseUrl}/Category/get_all`, {
-                    headers: { 'Authorization': API_CONFIG.token }
+                    headers: {Authorization: `Bearer ${API_CONFIG.getToken()}`}
                 });
                 if (!catResponse.ok) throw new Error("Failed to fetch categories");
                 const catResult = await catResponse.json();
                 if (catResult.success) setCategories(catResult.data);
 
                 const projResponse = await fetch(`${API_CONFIG.baseUrl}/Project/get_all`, {
-                    headers: { 'Authorization': API_CONFIG.token }
+                    headers: {Authorization: `Bearer ${API_CONFIG.getToken()}`}
                 });
                 if (!projResponse.ok) throw new Error("Failed to fetch projects");
                 const projResult = await projResponse.json();
@@ -113,7 +113,7 @@ const CreateTicket = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': API_CONFIG.token
+                    'Authorization': `Bearer ${API_CONFIG.getToken()}`
                 },
                 body: JSON.stringify(createTicketRequest)
             });

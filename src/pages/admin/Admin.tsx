@@ -1,6 +1,8 @@
 const Admin = () => {
     return (
-        <h1>Admin</h1>
+        <div className="p-8">
+            <h1>Hello world!</h1>
+        </div>
     )
 }
 

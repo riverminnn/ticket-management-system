@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import Timeline from '../../shared/components/Timeline';
+import Timeline from '../../../shared/components/Timeline.tsx';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faSave,

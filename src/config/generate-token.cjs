@@ -1,5 +1,5 @@
 // JWT Token Generator for Testing
-// Run with: node generate-token.js
+// Run with: node generate-token.cjs
 
 const crypto = require('crypto');
 
@@ -10,7 +10,7 @@ const ALGORITHM = 'HS256';
 // Token claims - customize as needed
 const payload = {
   sub: "3",  // User ID (the admin user from seed data)
-  email: "21a10010397@students.hou.edu.vn",
+  email: "admin",
   name: "admin",
   "http://schemas.microsoft.com/ws/2008/06/identity/claims/role": "Admin",
   exp: Math.floor(Date.now() / 1000) + (60 * 6000),  // Expires in 100 hour

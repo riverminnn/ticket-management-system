@@ -19,8 +19,8 @@ const AdminSidebar = () => {
 
     const [menuItems] = useState<MenuItem[]>([
         { id: 0, name: 'Admin', icon: faDiagramProject, link: '/admin' },
-        { id: 1, name: 'Ticket Management', icon: faTicket, link: '/admin/tickets' },
-        { id: 2, name: 'Departments', icon: faBuilding, link: '/admin/department' }
+        { id: 8, name: 'Ticket Management', icon: faTicket, link: '/admin/tickets' },
+        { id: 9, name: 'Departments', icon: faBuilding, link: '/admin/departments' }
     ]);
 
     const toggleSidebar = () => {

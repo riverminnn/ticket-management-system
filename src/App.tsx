@@ -47,7 +47,7 @@ function App() {
               <Route index={true} element={<Admin />} />
               <Route path='tickets' element={<AdminTickets />} />
               <Route path='tickets/:id' element={<AdminTicketDetail />} />
-              <Route path='department' element={<DepartmentManagement />} />
+              <Route path='departments' element={<DepartmentManagement />} />
             </Route>
           </Routes>
 

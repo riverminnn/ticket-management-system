@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEye,
@@ -37,6 +37,46 @@ interface ITicket {
 type ViewMode = 'table' | 'card';
 type FilterType = 'all' | 'created' | 'assigned' | 'following';
 
+// Helper functions moved outside component for better performance
+const mapPriority = (priority: any): string => {
+    if (typeof priority === 'string') {
+        const lower = priority.toLowerCase();
+        if (lower.includes('high') || lower.includes('cao') || lower === '3') return 'Cao';
+        if (lower.includes('medium') || lower.includes('trung') || lower === '2') return 'Trung bình';
+        if (lower.includes('low') || lower.includes('thấp') || lower === '1') return 'Thấp';
+    }
+    if (typeof priority === 'number') {
+        if (priority >= 3) return 'Cao';
+        if (priority === 2) return 'Trung bình';
+        return 'Thấp';
+    }
+    return 'Trung bình';
+};
+
+const mapStatus = (status: any): string => {
+    if (typeof status === 'string') {
+        const lower = status.toLowerCase();
+        if (lower === 'inprogress') return 'Đang xử lý';
+        if (lower === 'pending') return 'Chưa tiếp nhận';
+        if (lower === 'received') return 'Đã tiếp nhận';
+        if (lower === 'rejected') return 'Từ chối';
+        if (lower === 'closed') return 'Đã xử lý';
+    }
+    return 'Chưa tiếp nhận';
+};
+
+const getStatusColor = (status: any): string => {
+    const statusStr = mapStatus(status);
+    switch (statusStr) {
+        case 'Đang xử lý': return 'bg-blue-500';
+        case 'Đã xử lý': return 'bg-green-500';
+        case 'Từ chối': return 'bg-red-500';
+        case 'Chưa tiếp nhận': return 'bg-orange-500';
+        case 'Đã tiếp nhận': return 'bg-yellow-500';
+        default: return 'bg-gray-500';
+    }
+};
+
 const UserTicketListWithAPI = () => {
     const navigate = useNavigate();
 
@@ -73,7 +113,7 @@ const UserTicketListWithAPI = () => {
         searchFields: ['title', 'id', 'category', 'creator', 'headDepartment']
     });
 
-    const fetchTickets = async () => {
+    const fetchTickets = useCallback(async () => {
         try {
             setLoading(true);
             console.log('Fetching tickets from API...');
@@ -136,50 +176,12 @@ const UserTicketListWithAPI = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [filterType]); // Add filterType as dependency
 
-    const mapPriority = (priority: any): string => {
-        if (typeof priority === 'string') {
-            const lower = priority.toLowerCase();
-            if (lower.includes('high') || lower.includes('cao') || lower === '3') return 'Cao';
-            if (lower.includes('medium') || lower.includes('trung') || lower === '2') return 'Trung bình';
-            if (lower.includes('low') || lower.includes('thấp') || lower === '1') return 'Thấp';
-        }
-        if (typeof priority === 'number') {
-            if (priority >= 3) return 'Cao';
-            if (priority === 2) return 'Trung bình';
-            return 'Thấp';
-        }
-        return 'Trung bình';
-    };
-
-    const mapStatus = (status: any): string => {
-        if (typeof status === 'string') {
-            const lower = status.toLowerCase();
-            if (lower === 'inprogress') return 'Đang xử lý';
-            if (lower === 'pending') return 'Chưa tiếp nhận';
-            if (lower === 'received') return 'Đã tiếp nhận';
-            if (lower === 'rejected') return 'Từ chối';
-            if (lower === 'closed') return 'Đã xử lý';
-        }
-        return 'Chưa tiếp nhận';
-    };
-
-    const getStatusColor = (status: any): string => {
-        const statusStr = mapStatus(status);
-        switch (statusStr) {
-            case 'Đang xử lý': return 'bg-blue-500';
-            case 'Đã xử lý': return 'bg-green-500';
-            case 'Từ chối': return 'bg-red-500';
-            case 'Chưa tiếp nhận': return 'bg-orange-500';
-            case 'Đã tiếp nhận': return 'bg-yellow-500';
-            default: return 'bg-gray-500';
-        }
-    };
-
+    // Fetch tickets on mount and when filterType changes
     useEffect(() => {
         fetchTickets();
-    }, [filterType]);
+    }, [fetchTickets]);
 
     useEffect(() => {
         setCurrentPage(1);

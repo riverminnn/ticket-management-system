@@ -29,7 +29,7 @@ const Home = () => {
                 {/* Welcome Section */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                        Xin chào, Vu Thach Nhu Han! 👋
+                        Xin chào, username! 👋
                     </h1>
                     <p className="text-gray-600">
                         Chào mừng bạn đến với hệ thống quản lý yêu cầu hỗ trợ. Hãy tạo yêu cầu mới hoặc theo dõi các yêu cầu hiện tại của bạn.

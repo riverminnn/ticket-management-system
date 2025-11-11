@@ -16,7 +16,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 text-sm text-gray-700">
             <FontAwesomeIcon icon={faUser} className="text-gray-500" />
-            <span>Le Minh Viet Ha</span>
+            <span>username</span>
           </div>
         </div>
       </div>
